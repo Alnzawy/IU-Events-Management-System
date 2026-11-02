@@ -1,9 +1,7 @@
 # IU EVENTS
 ## Intelligent & Effective Event Management System for the Islamic University
 
-IU EVENTS is a web-based event management platform developed for the **Islamic University of Madinah**. It provides a centralized environment for creating and managing university events, student registration, attendance tracking, certificate issuance, feedback collection, AI-powered recommendations, and event analytics.
-
-The system is designed around three main user roles: **Students, Hosts, and Organizers**, supporting the event lifecycle from publication to post-event evaluation.
+A web-based event management system developed to centralize and improve the process of creating, organizing, browsing, and managing university events at the Islamic University of Madinah.
 
 ---
 
@@ -12,502 +10,419 @@ The system is designed around three main user roles: **Students, Hosts, and Orga
 - [Project Overview](#project-overview)
 - [Problem Statement](#problem-statement)
 - [Project Objectives](#project-objectives)
-- [User Roles](#user-roles)
+- [System Users](#system-users)
 - [Key Features](#key-features)
 - [Technology Stack](#technology-stack)
 - [Database Design](#database-design)
 - [System Diagrams](#system-diagrams)
-- [Screenshots](#screenshots)
-  - [Project Plan](#1-project-plan)
-  - [Survey Results](#2-survey-results)
-  - [System Analysis and Design](#3-system-analysis-and-design)
-  - [Implementation](#4-implementation)
-- [AI Recommendation Module](#ai-recommendation-module)
+- [System Screenshots](#system-screenshots)
+- [AI-Powered Recommendations](#ai-powered-recommendations)
 - [Analytics Dashboard](#analytics-dashboard)
 - [Development Methodology](#development-methodology)
-- [Running the Project](#running-the-project)
-- [Future Enhancements](#future-enhancements)
+- [Installation and Setup](#installation-and-setup)
+- [Future Improvements](#future-improvements)
 - [Academic Information](#academic-information)
-- [Team Members](#team-members)
-- [Acknowledgment](#acknowledgment)
+- [Project Team](#project-team)
+- [Acknowledgments](#acknowledgments)
 
 ---
 
 ## Project Overview
 
-University events play an important role in student engagement, campus activities, and community development. However, traditional announcement methods such as messaging groups, social media, and posters can make event information difficult to access and event coordination challenging.
+IU EVENTS is a web-based event management platform designed to improve how university events are announced, organized, and attended.
 
-IU EVENTS addresses these challenges through a centralized web platform that allows:
+The system provides a centralized platform where students can discover upcoming events, register for available sessions, track their registrations, receive personalized event recommendations, and obtain certificates after attending eligible events.
 
-- Organizers to create, publish, schedule, and monitor events.
-- Students to discover events, register, and track their participation.
-- Hosts to record attendance and issue certificates.
-- Organizers to evaluate event performance using analytics and feedback.
-- Students to receive personalized event recommendations based on their selected interests.
+It also provides dedicated interfaces for hosts and organizers to manage events, assign halls, monitor registrations, record attendance, issue certificates, collect feedback, and review event performance.
 
-The platform was developed as a Bachelor's Degree project at the Islamic University of Madinah.
+The project aims to make university event management more organized, accessible, and efficient.
 
 ## Problem Statement
 
-Traditional university event management methods can result in:
+University event announcements and management activities can be distributed across different communication channels. This makes it difficult for students to discover events and for organizers to manage registrations, available seats, schedules, and attendance in one place.
 
-- Event announcements being distributed across multiple communication channels.
-- Incomplete or unclear information about event dates, locations, and registration.
-- Difficulty tracking registrations and available seats.
-- Limited attendance records and participation statistics.
-- Lack of structured student feedback.
-- Difficulty evaluating event effectiveness and planning future activities.
-
-IU EVENTS provides a centralized solution to improve event accessibility, coordination, and evaluation.
+IU EVENTS addresses these challenges by providing a centralized system that brings the main event management activities together.
 
 ## Project Objectives
 
 - Provide a centralized platform for university event announcements.
-- Simplify event browsing and student registration.
-- Display available seats and enforce hall capacity limits.
-- Prevent scheduling conflicts involving halls and hosts.
+- Simplify event creation and management.
+- Allow students to browse and register for events.
+- Display available seats and registration information.
+- Reduce scheduling conflicts involving halls and event time slots.
 - Support attendance recording and certificate issuance.
-- Collect student feedback after events.
-- Provide AI-based event recommendations.
-- Offer organizers useful statistics and visual analytics.
+- Collect student feedback to help improve future events.
+- Provide AI-powered event recommendations.
+- Offer analytics to help organizers evaluate event performance.
 
-## User Roles
+## System Users
+
+The system supports three main user roles.
 
 ### 1. Student
 
 Students can:
-
 - Browse upcoming university events.
-- View event details, dates, times, halls, and available seats.
+- View event details and available seats.
 - Register for events.
-- View registered events and participation status.
-- Access and download issued certificates.
-- Submit feedback after attending events.
-- Receive personalized AI-based event recommendations.
+- Track their registration status.
+- Access their personalized dashboard.
+- View AI-based event recommendations.
+- Download certificates for eligible attended events.
+- Submit feedback after events.
 
 ### 2. Host
 
 Hosts can:
-
-- View their assigned events.
-- Preview event session details.
-- View registered students.
+- View events assigned to them.
+- Preview upcoming event sessions.
 - Record student attendance.
-- Issue certificates to students marked as attended.
+- Confirm attendance information.
+- Support certificate issuance for attended students.
 
 ### 3. Organizer
 
 Organizers can:
-
 - Create, edit, and delete events.
 - Assign hosts and halls.
 - Select event dates and time slots.
-- Check hall and host scheduling conflicts.
-- Monitor registrations and remaining seat capacity.
-- Access event statistics and analytics.
+- Monitor event registrations.
+- Identify scheduling conflicts.
+- Review event statistics and analytics.
+- Manage event-related activities.
 
 ## Key Features
 
-| Feature | Description |
-|---|---|
-| Role-Based Access | Separate interfaces and permissions for students, hosts, and organizers. |
-| Event Management | Create, edit, publish, and delete university events. |
-| Hall Scheduling | Assign halls and check scheduling conflicts. |
-| Host Assignment | Assign hosts and check their availability. |
-| Student Registration | Allow students to register for available events. |
-| Seat Availability | Display remaining seats and enforce capacity limits. |
-| Attendance Tracking | Allow hosts to record attendance. |
-| Certificates | Issue attendance certificates and provide student downloads. |
-| Feedback | Collect student ratings and comments. |
-| AI Recommendations | Suggest events based on student-selected interests. |
-| Analytics | Display attendance, satisfaction, registration, and hall utilization insights. |
+### Event Management
+- Create, update, and delete events.
+- Manage event information and schedules.
+- Assign halls and hosts.
+- Monitor event registration activity.
+
+### Student Registration
+- Browse available events.
+- Register for events through the student interface.
+- View available seats.
+- Track registration information through a personal dashboard.
+
+### Hall Scheduling
+- Select halls and event time slots.
+- Detect scheduling conflicts.
+- Help organizers avoid overlapping event bookings.
+
+### Attendance Management
+- Allow hosts to record attendance.
+- Track student participation.
+- Use attendance information to support certificate issuance.
+
+### Certificates
+- Generate and provide certificates for eligible attendees.
+- Allow students to download their certificates in PDF format.
+
+### Feedback
+- Collect student feedback after events.
+- Provide information that can help organizers improve future activities.
+
+### AI-Based Recommendations
+- Recommend events based on students' selected interest pillars.
+- Use the Google Gemini API to support personalized event suggestions.
+
+### Analytics
+- Present event performance information.
+- Track attendance, registration, satisfaction, and feedback.
+- Help organizers evaluate the effectiveness of university events.
 
 ## Technology Stack
 
 | Technology | Purpose |
 |---|---|
-| HTML5 | Structure of the web pages. |
-| CSS3 | Styling, layouts, dark mode, glassmorphism, and animations. |
-| JavaScript | Client-side interactivity, event wizard, calendar, and scheduling visualization. |
-| PHP | Server-side logic, authentication, sessions, and database operations. |
-| MySQL | Relational database management. |
-| MySQLi | Database connectivity using prepared statements. |
-| Bootstrap 5.3 | Responsive interface components and layouts. |
-| Chart.js | Analytics charts and visualizations. |
-| Google Gemini 2.0 Flash API | AI-powered event recommendations. |
-| XAMPP | Local development environment. |
+| HTML5 | Web page structure |
+| CSS3 | Styling, layouts, dark mode, and visual effects |
+| JavaScript | Interactive interfaces and client-side functionality |
+| PHP | Server-side logic, authentication, and system operations |
+| MySQL | Database management |
+| MySQLi | Database connectivity and prepared statements |
+| Bootstrap 5.3 | Responsive interface components |
+| Chart.js | Data visualization and analytics |
+| Google Gemini 2.0 Flash API | AI-powered event recommendations |
+| XAMPP | Local development environment |
 
 ## Database Design
 
-The system uses a relational MySQL database consisting of nine core tables:
+The system database contains nine main tables:
 
-| Table | Purpose |
+| Table | Description |
 |---|---|
-| Students | Student profiles, academic information, interests, and credentials. |
-| Hosts | Host profiles, contact information, and certificate signatures. |
-| Organizers | Organizer information and account credentials. |
-| Events | Event descriptions, dates, times, assigned halls, and hosts. |
-| Halls | Hall information and seating capacities. |
-| Registrations | Student registrations and registration status. |
-| Attendance | Attendance records and attendance status. |
-| Certificates | Issued certificates and their associated students and events. |
-| Feedback | Student ratings and comments about events. |
+| Students | Stores student-related information |
+| Hosts | Stores host information |
+| Organizers | Stores organizer information |
+| Events | Stores event details and schedules |
+| Halls | Stores hall information |
+| Registrations | Records student event registrations |
+| Attendance | Stores event attendance records |
+| Certificates | Stores certificate information |
+| Feedback | Stores student feedback |
 
-Primary keys and foreign keys are used to define relationships and maintain data integrity.
+The database is designed to support the relationships and operations required by the event management system.
 
 ## System Diagrams
 
-The project includes system analysis and design diagrams that describe its structure, behavior, and workflows.
+The following diagrams illustrate the system architecture, workflows, database structure, and interactions between users and system components.
 
-- **Use Case Diagram:** Illustrates the interactions between students, hosts, organizers, and the system.
-- **Activity Diagram:** Describes the event browsing and registration workflow.
-- **Data Flow Diagram (DFD):** Represents the movement of data between system processes.
-- **Entity Relationship Diagram (ERD):** Defines the database entities and relationships.
-- **Class Diagram:** Illustrates the system's classes and associations.
-- **Sequence Diagrams:** Describe authentication, event creation, registration, attendance, and post-event activities.
+### Figure 1 – Project Development Plan
 
-## Screenshots
+![Project Plan](screenshots/Figure%201.%20Project%20Plan%20for%20the%20Development%20of%20the%20IU%20EVENTS%20System%20Using%20the%20Incremental%20SDLC%20Model.png)
 
-The following screenshots document the project planning, survey findings, system design, and implemented interfaces.
+This figure presents the project development plan based on the Incremental SDLC model.
 
-> **Image organization:** Place the screenshots in the `screenshots/` directory in the repository root. The filenames below are the recommended naming convention used by this README.
+### Figure 2 – Use Case Diagram
 
-### 1. Project Plan
+![Use Case Diagram](screenshots/Figure%202.%20Use%20case%20diagram%20illustrating%20the%20main%20interactions%20within%20the%20IU%20EVENTS%20system..svg)
 
-**Figure 1 – Incremental SDLC Project Plan**
+This diagram illustrates the main system users and their interactions with IU EVENTS.
 
-![Project Plan](screenshots/Figure-01.png)
+### Figure 3 – Activity Diagram
 
-This Gantt chart presents the development schedule, project phases, team responsibilities, and timeline using the Incremental Software Development Life Cycle model.
+![Activity Diagram](screenshots/Figure%203.%20Activity%20diagram%20showing%20the%20workflow%20of%20event%20browsing%20and%20registration%20in%20IU%20EVENTS..svg)
 
-### 2. Survey Results
+This diagram shows the workflow followed when students browse events and complete the registration process.
 
-The project collected 48 student responses to understand existing event announcement practices and evaluate the proposed system's features.
+### Figure 4 – Data Flow Diagram (DFD)
 
-**Figure 2 – Current Event Announcement Methods**
+![Data Flow Diagram](screenshots/Figure%204.%20Data%20Flow%20Diagram%20(DFD)%20representing%20the%20movement%20of%20data%20across%20system%20processes..svg)
 
-![Current Event Announcement Methods](screenshots/Figure-02.png)
+This diagram represents how data moves between users, system processes, and data storage.
 
-Shows the channels students currently use to discover university events, including messaging groups and social media.
+### Figure 5 – Entity Relationship Diagram (ERD)
 
-**Figure 3 – Satisfaction with the Current Announcement Process**
+![Entity Relationship Diagram](screenshots/Figure%205.%20Entity%20Relationship%20(ER)%20diagram%20defining%20the%20system%E2%80%99s%20database%20structure%20and%20relationships..svg)
 
-![Announcement Satisfaction](screenshots/Figure-03.png)
+This diagram illustrates the database entities and the relationships between them.
 
-Presents students' satisfaction levels with the existing event announcement methods.
+### Figure 6 – Class Diagram
 
-**Figure 4 – Ease of Finding Event Announcements**
+![Class Diagram](screenshots/Figure%206.%20Class%20diagram%20outlining%20system%20classes%20and%20their%20associations%20in%20IU%20EVENTS..svg)
 
-![Ease of Finding Announcements](screenshots/Figure-04.png)
+This diagram outlines the main system classes and their associations.
 
-Illustrates how easily students can find information about university events.
+### Figure 7 – Authentication and Dashboard Access
 
-**Figure 5 – Opinion on a Centralized Event Portal**
+![Authentication Sequence Diagram](screenshots/Figure%207.%20Sequence%20Diagram%20Shows%20Authentication%20%26%20Dashboard%20Access.svg)
 
-![Centralized Event Portal](screenshots/Figure-05.png)
+This sequence diagram illustrates the authentication process and how users access their dashboards.
 
-Shows students' opinions about having one centralized platform for university event information.
+### Figure 8 – Event Creation Sequence
 
-**Figure 6 – Helpfulness of Real-Time Seat Availability**
+![Event Creation Sequence Diagram](screenshots/Figure%208.%20Sequence%20Diagram%20Shows%20Event%20Creation.svg)
 
-![Real-Time Seat Availability](screenshots/Figure-06.png)
+This diagram shows the interactions involved in creating a new event.
 
-Presents students' evaluation of the usefulness of viewing available seats before registering.
+### Figure 9 – Event Registration Sequence
 
-**Figure 7 – Usefulness of AI-Based Event Suggestions**
+![Event Registration Sequence Diagram](screenshots/Figure%209.%20Sequence%20Diagram%20Shows%20Event%20Registration.svg)
 
-![AI Event Suggestions Survey](screenshots/Figure-07.png)
+This diagram describes the sequence of interactions during student event registration.
 
-Illustrates students' opinions about receiving personalized event recommendations.
+### Figure 10 – Event Execution and Attendance
 
-**Figure 8 – Most Helpful Features Preferred by Students**
+![Event Execution and Attendance](screenshots/Figure%2010.%20Sequence%20Diagram%20Shows%20Event%20Execution%20%26%20Attendance.svg)
 
-![Preferred Features](screenshots/Figure-08.png)
+This diagram illustrates the event execution process and attendance recording activities.
 
-Summarizes the features students considered most useful in the proposed IU EVENTS platform.
+### Figure 11 – Post-Event Activities
 
-**Figure 9 – Preferred Registration Confirmation Method**
+![Post Event Activities](screenshots/Figure%2011%20Sequence%20Diagram%20Shows%20Post%20Event%20Activities.svg)
 
-![Registration Confirmation Preferences](screenshots/Figure-09.png)
+This diagram presents the activities performed after an event, including post-event processes.
 
-Shows students' preferred method for receiving confirmation after event registration.
+### Figure 12 – Gantt Chart and Project Timeline
 
-**Figure 10 – Organizers' Evaluation of Management Features**
+![Gantt Chart](screenshots/Figure%2012%20The%20Gantt%20chart%20illustrates%20the%20Project%20development%20plan,%20team%20roles,%20and%20timeline%20for%20IU%20EVENTS..svg)
 
-![Organizer Feature Evaluation](screenshots/Figure-10.png)
+This chart illustrates the project development timeline, team responsibilities, and planned activities.
 
-Presents the perceived usefulness of registration statistics, attendance tracking, and feedback collection.
+## System Screenshots
 
-**Figure 11 – Usefulness of Event Feedback Systems**
+The following screenshots demonstrate the main interfaces and features implemented in IU EVENTS.
 
-![Feedback System Survey](screenshots/Figure-11.png)
+### Figure 13 – Event Creation Interface
 
-Illustrates students' opinions about using feedback to improve future university events.
+![Event Creation Interface](screenshots/Figure%2013%20Event%20Creation%20Interface%20in%20the%20Organizer%20Module.png)
 
-**Figure 12 – Additional Suggested Features**
+This interface allows organizers to create events and enter the required event information.
 
-![Additional Suggested Features](screenshots/Figure-12.png)
+### Figure 14 – Hall Scheduling and Time Selection
 
-Summarizes additional improvements and features suggested by survey participants.
+![Hall Scheduling](screenshots/Figure%2014%20Hall%20Scheduling%20and%20Time%20Selection.png)
 
-### 3. System Analysis and Design
+This interface allows organizers to select halls and event time slots while supporting scheduling conflict detection.
 
-**Figure 13 – Use Case Diagram**
+### Figure 15 – Event Monitoring and Registration Overview
 
-![Use Case Diagram](screenshots/Figure-13.png)
+![Event Monitoring](screenshots/Figure%2015%20Event%20Monitoring%20and%20Registration%20Overview.png)
 
-Illustrates the main system functions and how students, hosts, and organizers interact with IU EVENTS.
+This screen provides organizers with an overview of event information and registration activity.
 
-**Figure 14 – Activity Diagram**
+### Figure 16 – Attendance Recording Interface
 
-![Activity Diagram](screenshots/Figure-14.png)
+![Attendance Recording](screenshots/Figure%2016%20Attendance%20Recording%20Interface%20in%20the%20Host%20Portal.png)
 
-Describes the workflow of browsing events and completing the registration process.
+This interface enables hosts to record student attendance for their assigned events.
 
-**Figure 15 – Data Flow Diagram (DFD)**
+### Figure 17 – Certificate Issuance and Attendance Confirmation
 
-![Data Flow Diagram](screenshots/Figure-15.png)
+![Certificate Issuance](screenshots/Figure%2017%20Certificate%20Issuance%20and%20Attendance%20Confirmation.png)
 
-Shows how information moves between users, system processes, and data storage.
+This screen demonstrates the attendance confirmation and certificate issuance process.
 
-**Figure 16 – Entity Relationship Diagram (ERD)**
+### Figure 18 – Upcoming Event Session Preview
 
-![Entity Relationship Diagram](screenshots/Figure-16.png)
+![Upcoming Event Session Preview](screenshots/Figure%2018%20Upcoming%20Event%20Session%20Preview%20for%20Hosts.png)
 
-Presents the database entities and their relationships, including events, users, registrations, attendance, certificates, and feedback.
+This interface allows hosts to preview their upcoming event sessions.
 
-**Figure 17 – Class Diagram**
+### Figure 19 – Host Dashboard Overview
 
-![Class Diagram](screenshots/Figure-17.png)
+![Host Dashboard](screenshots/Figure%2019%20Host%20Dashboard%20Overview.png)
 
-Illustrates the main system classes and their relationships.
+This dashboard provides hosts with an overview of their event-related activities.
 
-**Figure 18 – Authentication and Dashboard Access Sequence Diagram**
+### Figure 20 – Browsing Upcoming Events
 
-![Authentication Sequence Diagram](screenshots/Figure-18.png)
+![Browsing Upcoming Events](screenshots/Figure%2020%20Browsing%20Upcoming%20Events.png)
 
-Shows the interaction sequence for user authentication and accessing the appropriate dashboard.
+This screen allows students to explore upcoming university events.
 
-**Figure 19 – Event Creation Sequence Diagram**
+### Figure 21 – Event Registration and Seat Availability
 
-![Event Creation Sequence Diagram](screenshots/Figure-19.png)
+![Event Registration](screenshots/Figure%2021%20Event%20Registration%20and%20Seat%20Availability.png)
 
-Describes the interactions involved in creating an event.
+This interface displays event registration information and available seats to students.
 
-**Figure 20 – Event Registration Sequence Diagram**
+### Figure 22 – Personalized Student Dashboard
 
-![Event Registration Sequence Diagram](screenshots/Figure-20.png)
+![Student Dashboard](screenshots/Figure%2022%20Personalized%20Student%20Dashboard.png)
 
-Illustrates the registration process and the communication between the student and system components.
+This dashboard provides students with a personalized view of their event-related information and registrations.
 
-**Figure 21 – Event Execution and Attendance Sequence Diagram**
+### Figure 23 – AI Event Recommendations
 
-![Attendance Sequence Diagram](screenshots/Figure-21.png)
+![AI Event Recommendations](screenshots/Figure%2023%20Personalized%20AI%20Event%20Recommendations%20Display.png)
 
-Shows the workflow for managing an event session and recording student attendance.
+This screen presents personalized event suggestions based on student interests using the AI recommendation feature.
 
-**Figure 22 – Post-Event Activities Sequence Diagram**
+### Figure 24 – Organizer Analytics Dashboard
 
-![Post Event Sequence Diagram](screenshots/Figure-22.png)
+![Organizer Analytics Dashboard](screenshots/Figure%2024%20Organizer%20Analytics%20Dashboard.png)
 
-Describes the activities that take place after an event, including related attendance, certificates, and feedback operations.
+This dashboard presents event analytics to help organizers monitor performance and evaluate activities.
 
-### 4. Implementation
+## AI-Powered Recommendations
 
-#### Project Management
+IU EVENTS integrates the Google Gemini 2.0 Flash API to support personalized event recommendations.
 
-**Figure 23 – Project Development Gantt Chart**
+The recommendation feature uses students' selected interest pillars to help suggest events that may be relevant to their interests.
 
-![Project Gantt Chart](screenshots/Figure-23.png)
-
-Illustrates the project development plan, assigned team responsibilities, and implementation timeline.
-
-#### Organizer Module
-
-**Figure 24 – Event Creation Interface**
-
-![Event Creation Interface](screenshots/Figure-24.png)
-
-Shows the organizer's event creation interface, where event information and required details are entered through a multi-step wizard.
-
-**Figure 25 – Hall Scheduling and Time Selection**
-
-![Hall Scheduling](screenshots/Figure-25.png)
-
-Displays the hall and time selection interface, supporting scheduling and conflict detection for halls and assigned hosts.
-
-**Figure 26 – Event Monitoring and Registration Overview**
-
-![Event Monitoring](screenshots/Figure-26.png)
-
-Shows the organizer's event overview, including registration information and remaining seat capacity.
-
-#### Host Module
-
-**Figure 27 – Attendance Recording Interface**
-
-![Attendance Recording](screenshots/Figure-27.png)
-
-Displays the host interface for viewing registered students and marking their attendance.
-
-**Figure 28 – Certificate Issuance and Attendance Confirmation**
-
-![Certificate Issuance](screenshots/Figure-28.png)
-
-Shows the certificate issuance process for students recorded as attending an event.
-
-**Figure 29 – Upcoming Event Session Preview**
-
-![Upcoming Host Event](screenshots/Figure-29.png)
-
-Presents the details of an upcoming event assigned to a host, including its date, time, and hall.
-
-**Figure 30 – Host Dashboard Overview**
-
-![Host Dashboard](screenshots/Figure-30.png)
-
-Displays the host dashboard, providing an overview of assigned event activities.
-
-#### Student Module
-
-**Figure 31 – Browsing Upcoming Events**
-
-![Upcoming Events](screenshots/Figure-31.png)
-
-Shows the student event browsing interface, where available events and their details can be explored.
-
-**Figure 32 – Event Registration and Seat Availability**
-
-![Event Registration](screenshots/Figure-32.png)
-
-Displays the registration confirmation interface, including event details, certification availability, and remaining seats.
-
-**Figure 33 – Personalized Student Dashboard**
-
-![Student Dashboard](screenshots/Figure-33.png)
-
-Shows the student's personal dashboard, including registered events and their participation statuses.
-
-#### Recommendation Module
-
-**Figure 34 – Personalized AI Event Recommendations**
-
-![AI Recommendations](screenshots/Figure-34.png)
-
-Displays personalized event suggestions generated using the student's selected interests and the Google Gemini 2.0 Flash API.
-
-#### Analytics Module
-
-**Figure 35 – Organizer Analytics Dashboard**
-
-![Organizer Analytics Dashboard](screenshots/Figure-35.png)
-
-Presents the organizer's analytics dashboard, providing visual insights into attendance, satisfaction, registration drop-off, feedback participation, hall utilization, and event performance.
-
-## AI Recommendation Module
-
-IU EVENTS integrates the **Google Gemini 2.0 Flash API** to provide personalized event recommendations.
-
-The recommendation process consists of:
-
-1. Students select their interests from predefined categories.
-2. The system uses the selected interests and available event information as input to the recommendation process.
-3. The Gemini API generates event suggestions.
-4. Recommended events are displayed in a dedicated section of the student event exploration interface.
-
-This feature aims to make event discovery more relevant to students' interests.
+The AI integration is intended to improve event discovery and provide students with a more personalized experience.
 
 ## Analytics Dashboard
 
-The organizer analytics dashboard supports event evaluation and decision-making through the following indicators:
+The organizer analytics dashboard provides information that supports event evaluation and decision-making.
 
-| Metric | Description |
-|---|---|
-| Overall Attendance Rate | Percentage of registered students who attended. |
-| Average Student Satisfaction | Average rating from submitted feedback forms, out of 5. |
-| Registration Drop-off Rate | Percentage of registered students who did not attend. |
-| Feedback Participation Rate | Percentage of attendees who submitted feedback. |
-| Attendance Trend | Attendance patterns across event dates. |
-| Hall Utilization Rate | Percentage of hall capacity used. |
-| Event Retention Funnel | Tracks the stages Registered → Attended → Feedback. |
-| Top 6 Events | Ranks events using 70% satisfaction and 30% registration count. |
+The project includes analytical measures such as:
 
-Chart.js is used to visualize attendance trends and hall utilization.
+- Overall attendance.
+- Average satisfaction.
+- Registration drop-off.
+- Feedback participation.
+- Attendance trends.
+- Hall utilization.
+- Event retention funnel.
+- Top-performing events.
+
+The top events evaluation uses a weighted approach based on satisfaction (70%) and registration (30%).
 
 ## Development Methodology
 
-The project follows the **Incremental Software Development Life Cycle (SDLC)** model.
+The project followed the Incremental Software Development Life Cycle (SDLC).
 
-Development was divided into functional increments, including:
+The system was developed through incremental stages, allowing features to be planned, implemented, and evaluated progressively.
 
-1. Authentication and role-based access.
-2. Event creation and management.
-3. Student browsing and registration.
-4. Attendance tracking and certificate issuance.
-5. AI-based recommendations.
-6. Analytics and dashboard functionality.
+The development process included requirements gathering, system analysis, design, implementation, and testing.
 
-This approach supported progressive implementation and testing of the system's interconnected modules.
+## Installation and Setup
 
-## Running the Project
+IU EVENTS was developed to run in a local XAMPP environment.
 
-IU EVENTS was developed and tested in a local XAMPP environment.
+### Requirements
 
-To run the project locally:
+- XAMPP.
+- Apache Web Server.
+- MySQL.
+- PHP.
+- A modern web browser.
+- Google Gemini API key for AI recommendation functionality.
 
-1. Install and open **XAMPP**.
-2. Start the Apache and MySQL services.
+### Setup Instructions
+
+1. Install and open XAMPP.
+2. Start Apache and MySQL.
 3. Place the project folder inside the XAMPP `htdocs` directory.
-4. Create the required MySQL database using the database structure or SQL export included with the project, if provided.
-5. Configure the application's database connection settings to match your local MySQL configuration.
-6. Configure the Google Gemini API credentials if you want to use the AI recommendation feature.
-7. Open the project through your browser using the corresponding localhost project path.
+4. Open phpMyAdmin.
+5. Import the project's database SQL file, if available.
+6. Configure the database connection settings in the appropriate configuration file.
+7. Configure the Gemini API credentials if you want to use the AI functionality.
+8. Open the project through your browser using the local XAMPP address.
 
-**Note:** The exact database name, SQL import filename, and database configuration file depend on the source-code files included in the repository.
+**Important:** The exact database export filename and database configuration values depend on the files included in the project. Configure these according to your local setup.
 
-### API Key Security
+### Security Note
 
-Do not publish private API keys or database passwords in a public repository. Keep credentials in a local configuration file and exclude that file from Git using `.gitignore`.
+Do not publish API keys, database passwords, or other sensitive credentials in a public repository. Use local configuration or environment variables for private credentials.
 
-## Future Enhancements
+## Future Improvements
 
 The following improvements were identified for future development:
 
-- **Email Notifications:** Automated registration confirmations and certificate notifications.
-- **Mobile Application:** A dedicated mobile experience for students and event participants.
-- **University Portal Integration:** Integration with the official university student information system.
-- **Cloud Deployment:** Deployment to a cloud environment to improve scalability and availability.
-- **Role Expansion:** Additional roles and event approval workflows.
-- **Multi-Language Support:** Support for additional languages to improve accessibility.
+- Email notifications for event updates and registration confirmations.
+- A dedicated mobile-friendly interface.
+- Integration with the university portal.
+- Cloud deployment.
+- Additional user roles and permissions.
+- Multi-language support.
+
+These are proposed future improvements and should not be considered implemented features.
 
 ## Academic Information
 
 **Project Title:** IU EVENTS: Intelligent & Effective Event Management System for the Islamic University
 
-**Degree:** Bachelor's Degree in Information Technology
-
 **Institution:** Islamic University of Madinah
 
 **Faculty:** Faculty of Computer and Information Systems
 
-**Supervisor:** Dr. Sohail Mohamed Alhazmi
+**Degree:** Bachelor's Degree
 
 **Date:** April 2026
 
-## Team Members
+**Supervisor:** Dr. Sohail Mohamed Alhazmi
 
-| Name | Student ID |
+## Project Team
+
+| Name | University ID |
 |---|---|
 | Abdulrahman Abdulaziz Alnzawy | 431011003 |
 | Abdullah Mohamed Aljohani | 431013303 |
 | Jawad Fouad Alahmadi | 431004163 |
 
-## Acknowledgment
+## Acknowledgments
 
-We would like to express our sincere gratitude to our project supervisor, **Dr. Sohail Mohamed Alhazmi**, for his generous support, guidance, and valuable feedback throughout the development of IU EVENTS.
+We would like to express our sincere gratitude to our project supervisor, Dr. Sohail Mohamed Alhazmi, for his guidance, support, and valuable feedback throughout the development of this project.
 
-His experience and advice played an important role in guiding the project and improving its overall quality.
+We also thank the Faculty of Computer and Information Systems at the Islamic University of Madinah for providing the academic environment and resources that supported this work.
 
 ---
 
-**IU EVENTS — Making University Events More Accessible, Organized, and Effective.**
+**IU EVENTS – Intelligent & Effective Event Management System for the Islamic University**
+
+*A graduation project developed at the Islamic University of Madinah, April 2026.*
