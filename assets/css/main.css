@@ -1,0 +1,482 @@
+/* ==========================================================================
+   SECTION 2: LANDING PAGE
+   Navbar, Hero, Event Cards, Timetable, Modal, Footer
+   Used in: index.php (public)
+   ========================================================================== */
+
+/* ========================================= */
+/* Main Navigation Bar */
+/* Used in: index.php */
+/* ========================================= */
+.navbar {
+    background: var(--gradient-main);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Soft 30% shadow beneath navbar */
+    transition: var(--transition);
+    border-bottom: var(--border-subtle);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-brand i {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.9) !important; /* 90% opacity white for nav links */
+    font-weight: 500;
+    margin: 0 0.5rem;
+    transition: var(--transition);
+    position: relative; /* Required for the animated underline effect */
+}
+
+.nav-link:hover {
+    color: var(--accent-color) !important;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color); /* Gold underline */
+    transition: var(--transition);
+    transform: translateX(-50%); /* Centers the starting point of the underline */
+}
+
+.nav-link:hover::after {
+    width: 80%; /* Expands underline to 80% width on hover */
+}
+
+
+
+/* ========================================= */
+/* Upcoming Events Section Container */
+/* Used in: index.php */
+/* ========================================= */
+.events-section {
+    padding: 8rem 0 5rem 0;
+    background: var(--dark-bg);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff !important;
+    margin-bottom: 3rem;
+    position: relative; /* Required for the gold accent line below title */
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%); /* Centers the line below the text */
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+/* ========================================= */
+/* Public Event Cards */
+/* Used in: index.php */
+/* ========================================= */
+.event-card-wrapper {
+    transition: var(--transition);
+}
+
+.event-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #1c2434; /* Dark slate blue card background */
+    border-radius: 18px;
+    overflow: hidden; /* Ensures child elements respect border radius */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Soft 15% black drop shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle 5% white border to define edges */
+}
+
+.event-card:hover {
+    transform: translateY(-4px); /* Elevates card 4px on hover */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); /* Intensifies shadow to 30% on hover */
+}
+
+.event-image {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers area without distortion */
+    transition: transform 0.3s ease;
+}
+
+.event-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%); /* 60% black fading down for date badge contrast */
+    pointer-events: none;
+}
+
+.event-card:hover .event-image img {
+    transform: scale(1.05); /* Gentle 5% zoom on image hover */
+}
+
+
+/* ========================================= */
+/* Event Date Badge on Cards */
+/* Used in: index.php inside event cards */
+/* ========================================= */
+.date-badge {
+    position: absolute;
+    top: -5px;
+    right: 16px;
+    background: #1c2434;
+    padding: 0.5rem 0.6rem;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid #d4af37; /* Gold border */
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.date-badge .day {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    line-height: 1;
+}
+
+.date-badge .month {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+}
+
+/* ========================================= */
+/* Event Card Body Details */
+/* Used in: index.php inside event cards */
+/* ========================================= */
+.event-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.category-label {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px; /* Pill shaped badge */
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    width: fit-content;
+}
+
+.event-title {
+    font-weight: 600;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.event-meta {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.event-meta i {
+    color: var(--accent-color);
+    margin-right: 0.3rem;
+}
+
+.event-host {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.event-host i {
+    color: var(--accent-color);
+    margin-right: 0.3rem;
+}
+
+.event-description {
+    line-height: 1.5;
+}
+
+.text-white-50 {
+    color: rgba(255, 255, 255, 0.6) !important; /* 60% opacity white text utility */
+}
+
+/* ========================================= */
+/* Hall Timetable Section */
+/* Used in: index.php */
+/* ========================================= */
+.hall-section {
+    padding: 5rem 0;
+    background: var(--card-bg);
+}
+
+.hall-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.hall-btn {
+    background: var(--dark-bg);
+    color: var(--text-light);
+    border: 2px solid rgba(255, 255, 255, 0.1); /* 10% white border */
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy spring transition */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden; /* Hides the hover glow effect from bleeding out */
+    z-index: 1;
+}
+
+.hall-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(212, 175, 55, 0.15); /* 15% gold circle for hover effect */
+    border-radius: 50%;
+    transform: translate(-50%, -50%); /* Centers the expanding circle */
+    transition: width 0.6s ease, height 0.6s ease;
+    z-index: -1; /* Keeps circle behind the text */
+}
+
+.hall-btn:hover::before {
+    width: 300px; /* Expands the circle to fill the button */
+    height: 300px;
+}
+
+.hall-btn:hover {
+    transform: translateY(-4px) scale(1.02); /* Slight lift and zoom */
+    border-color: rgba(212, 175, 55, 0.5); /* 50% gold border on hover */
+    color: var(--accent-color);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15); /* Subtle gold glow */
+}
+
+.hall-btn.active {
+    background: var(--accent-color);
+    color: #1a2332;
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); /* Solid gold glow when active */
+}
+
+.hall-btn.active:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+    color: #1a2332;
+    background: var(--accent-color);
+}
+
+.timetable-wrapper {
+    background: var(--dark-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.timetable-grid {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text-light);
+}
+
+.timetable-grid thead {
+    background: var(--gradient-main);
+}
+
+.timetable-grid thead th {
+    padding: 1rem;
+    font-weight: 600;
+    border: var(--border-subtle);
+}
+
+.time-slot {
+    background: var(--card-bg);
+    padding: 1rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-align: center;
+    border-right: 2px solid rgba(212, 175, 55, 0.2); /* 20% gold separator line */
+}
+
+.timetable-cell {
+    padding: 0.5rem;
+    min-height: 80px;
+    vertical-align: top;
+    border: var(--border-subtle);
+}
+
+
+
+/* ========================================= */
+/* Event Modal Popup */
+/* Used in: index.php when clicking an event */
+/* ========================================= */
+.modal-content {
+    background: var(--card-bg);
+    color: var(--text-light);
+    border: var(--border-subtle);
+    border-radius: var(--border-radius);
+}
+
+.modal-header .btn-close {
+    filter: brightness(0) invert(1); /* Forces the default dark close icon to be white */
+}
+
+
+
+/* ========================================= */
+/* Public Footer */
+/* Used in: index.php */
+/* ========================================= */
+.footer {
+    background: var(--card-bg);
+    color: var(--text-light);
+    padding: 2rem 0;
+    margin-top: 3rem;
+    border-top: var(--border-subtle);
+}
+
+/* ========================================= */
+/* Mobile Responsiveness */
+/* Used in: Viewports under 768px */
+/* ========================================= */
+@media (max-width: 768px) {
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .hall-selector {
+        flex-direction: column;
+    }
+
+    .hall-btn {
+        width: 100%;
+    }
+}
+
+/* ========================================= */
+/* Landing Header/Hero Area */
+/* Used in: index.php top section */
+/* ========================================= */
+.landing-header-section {
+    padding-top: 130px;
+    padding-bottom: 2rem;
+}
+
+.landing-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1rem;
+    letter-spacing: -1px; /* Tighter letter spacing for massive headers */
+}
+
+.landing-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ========================================= */
+/* Hero Search Bar */
+/* Used in: index.php inside hero section */
+/* ========================================= */
+.search-bar-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.search-bar-wrap .input-group {
+    background: rgba(21, 30, 50, 0.85); /* 85% opacity deep navy */
+    border: 1px solid rgba(250, 204, 21, 0.25); /* 25% gold border */
+    border-radius: 50px;
+    padding: 6px 6px 6px 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.05); /* Outer drop shadow and inner 5% white rim highlight */
+    backdrop-filter: blur(12px); /* 12px blur effect for glassmorphism */
+    transition: var(--transition);
+}
+
+.search-bar-wrap .input-group:focus-within {
+    border-color: rgba(250, 204, 21, 0.6); /* 60% gold border when focused */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 4px rgba(250, 204, 21, 0.1), inset 0 1px 0 rgba(255,255,255,0.05); /* Adds a 10% gold glow ring around it */
+    transform: translateY(-2px); /* Lifts search bar slightly on focus */
+}
+
+.search-bar-wrap .input-group-text {
+    background: transparent;
+    border: none;
+    padding: 0 12px 0 0;
+    color: var(--gold-primary);
+    font-size: 1.1rem;
+}
+
+.search-bar-wrap .form-control {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--text-main) !important;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.55rem 0.5rem;
+    outline: none !important;
+}
+
+.search-bar-wrap .form-control::placeholder {
+    color: rgba(148, 163, 184, 0.6); /* 60% opacity slate grey placeholder */
+    font-weight: 400;
+}
+
+
+@media (max-width: 768px) {
+    .landing-header-section {
+        padding-top: 100px;
+    }
+    .landing-title {
+        font-size: 2.5rem;
+    }
+}

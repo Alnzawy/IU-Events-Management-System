@@ -1,0 +1,280 @@
+/* ==========================================================================
+   SECTION 6: ORGANIZER-SPECIFIC
+   Event Wizard, Calendar, Time Grid, Analytics
+   Used in: organizer/*.php
+   ========================================================================== */
+
+/* ========================================= */
+/* Event Wizard Steps Animation */
+/* Used in: organizer/event_wizard_helper.php */
+/* ========================================= */
+.wizard-step {
+    display: none;
+}
+
+.wizard-step.active {
+    display: block;
+    animation: organizerFadeIn 0.4s ease; /* Smooth 400ms fade up for wizard transitions */
+}
+
+@keyframes organizerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================= */
+/* Calendar Grid System */
+/* Used in: organizer/event_wizard_helper.php */
+/* ========================================= */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 equal columns for days of the week */
+    gap: 5px;
+    text-align: center;
+}
+
+.calendar-day-header {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4); /* 40% white for muted day headers */
+    font-weight: bold;
+    padding: 5px;
+}
+
+.calendar-day {
+    aspect-ratio: 1; /* Keeps the day blocks perfectly square */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.calendar-day:hover:not(.disabled) {
+    background: rgba(255, 255, 255, 0.1); /* 10% white hover highlight */
+}
+
+.calendar-day.selected {
+    background: var(--primary-color) !important;
+    color: #fff !important;
+}
+
+.calendar-day.today {
+    border: 1px solid var(--primary-color); /* Outlines the current day */
+    color: var(--primary-color);
+}
+
+.calendar-day.disabled {
+    opacity: 0.2; /* Fades out past/unavailable days */
+    cursor: not-allowed;
+}
+
+/* ========================================= */
+/* Time Selection Grid */
+/* Used in: organizer/event_wizard_helper.php */
+/* ========================================= */
+.time-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns for time slots */
+    gap: 10px;
+}
+
+.time-cell {
+    background: rgba(255, 255, 255, 0.05); /* 5% white base background */
+    border: var(--border-light);
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.time-cell:hover:not(:disabled) {
+    border-color: var(--primary-color);
+    background: rgba(16, 185, 129, 0.1); /* 10% emerald tint on hover */
+}
+
+.time-cell.selected {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.time-cell:disabled {
+    opacity: 0.3;
+    background: rgba(220, 53, 69, 0.1); /* 10% red tint for booked times */
+    border-color: rgba(220, 53, 69, 0.2); /* 20% red border for booked times */
+    cursor: not-allowed;
+}
+
+/* ==========================================================================
+   SECTION 9: EVENT WIZARD MODAL
+   Used in: organizer/event_wizard_helper.php
+   ========================================================================== */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+@keyframes wizardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#eventModal .wizard-step {
+    display: none;
+}
+
+#eventModal .wizard-step.active {
+    display: block;
+    animation: wizardFadeIn 0.4s ease-out; /* Bouncy entrance for modal wizard steps */
+}
+
+#eventModal .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+#eventModal .calendar-day-header {
+    padding: 10px;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#eventModal .calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle 5% white border */
+}
+
+#eventModal .calendar-day:hover:not(.disabled) {
+    background: rgba(0, 207, 255, 0.1); /* 10% cyan background on hover */
+    border-color: #0dcaf0;
+    color: #0dcaf0;
+}
+
+#eventModal .calendar-day.selected {
+    background: #0dcaf0 !important;
+    color: #000 !important;
+    font-weight: 700;
+    box-shadow: 0 0 15px rgba(13, 202, 240, 0.4); /* Cyan glow effect for selected day */
+}
+
+#eventModal .calendar-day.disabled {
+    opacity: 0.15;
+    cursor: not-allowed;
+}
+
+
+.bg-info-subtle {
+    background-color: rgba(13, 202, 240, 0.1) !important; /* 10% cyan utility class */
+}
+
+/* ========================================= */
+/* Modal Selection Lists & Time Grid */
+/* Used in: organizer/event_wizard_helper.php */
+/* ========================================= */
+.list-group-item.active {
+    background-color: #3b82f6 !important;
+    border-color: #3b82f6 !important;
+    color: #fff !important;
+}
+
+#eventModal .time-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Responsive grid adapting to modal width */
+    gap: 12px;
+}
+
+#eventModal .time-cell {
+    background: rgba(255, 255, 255, 0.05);
+    border: var(--border-light);
+    border-radius: 10px;
+    padding: 15px 10px;
+    color: #fff;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+#eventModal .time-cell:hover:not(:disabled) {
+    background: rgba(13, 202, 240, 0.1); /* Cyan hover highlight */
+    border-color: #0dcaf0;
+    color: #0dcaf0;
+}
+
+#eventModal .time-cell.selected {
+    background: #198754 !important; /* Emerald green for confirmed selections */
+    border-color: #198754 !important;
+    color: #fff !important;
+    box-shadow: 0 0 15px rgba(25, 135, 84, 0.4); /* Emerald glow effect */
+}
+
+#eventModal .time-cell:disabled {
+    background: rgba(220, 53, 69, 0.1); /* Red tint for disabled time slots */
+    border-color: rgba(220, 53, 69, 0.2);
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#eventModal .time-cell:disabled span {
+    text-decoration: line-through; /* Crosses out booked times */
+}
+
+#eventModal .form-select option {
+    background: #1f2937; /* Dark background for dropdown options to match dark mode */
+    color: #fff;
+}
+
+/* ========================================= */
+/* Duplicate UI Styles (Legacy) */
+/* Used in: Unknown/Legacy */
+/* ========================================= */
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; }
+.calendar-day-header { font-size: 0.8rem; color: #6c757d; font-weight: bold; margin-bottom: 5px; }
+.calendar-day { padding: 10px 5px; border-radius: 8px; cursor: pointer; transition: all 0.2s; border: 1px solid transparent; }
+.calendar-day:hover:not(.disabled) { background-color: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+.calendar-day.selected { background-color: #0d6efd; color: white !important; font-weight: bold; box-shadow: 0 4px 10px rgba(13, 110, 253, 0.4); }
+.calendar-day.disabled { opacity: 0.3; cursor: not-allowed; text-decoration: line-through; }
+
+.time-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+.time-cell { padding: 10px; border-radius: 8px; text-align: center; cursor: pointer; transition: all 0.2s; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; }
+.time-cell:hover:not(:disabled) { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); }
+.time-cell.selected { background-color: #0d6efd; color: white !important; font-weight: bold; border-color: #0d6efd; box-shadow: 0 4px 10px rgba(13, 110, 253, 0.4); }
+.time-cell:disabled { background-color: rgba(220, 53, 69, 0.2); color: rgba(255,255,255,0.5) !important; border-color: rgba(220, 53, 69, 0.3); cursor: not-allowed; }
+
+/* ========================================= */
+/* Top Selector Bar (Analytics) */
+/* Used in: organizer/analytics.php */
+/* ========================================= */
+.selector-bar { flex-shrink: 0; background: var(--obsidian-card); border: 1px solid var(--obsidian-border); border-radius: 16px; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.2); margin-bottom: 1.5rem; }
+
+.event-select {
+    background: rgba(0,0,0,0.2); border: 1px solid var(--obsidian-border); border-radius: 10px; color: var(--text-main);
+    padding: 0.6rem 2.5rem 0.6rem 1rem; font-size: 0.9rem; font-family: 'Inter', sans-serif; min-width: 400px;
+    outline: none; cursor: pointer; appearance: none; /* Hides native browser dropdown arrow */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2394A3B8' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E"); /* Injects custom SVG chevron for dropdown */
+    background-repeat: no-repeat; background-position: right 1rem center; background-size: 10px;
+    transition: border-color 0.2s;
+}
+.event-select:hover { border-color: rgba(255,255,255,0.2); }
+.event-select option { background: #0F172A; color: var(--text-main); padding: 10px; /* Styles the expanded dropdown options list */ }

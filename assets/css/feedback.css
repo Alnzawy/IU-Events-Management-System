@@ -1,0 +1,133 @@
+/* ==========================================================================
+   FEEDBACK.CSS - Unified Feedback UI (Student & Host Portals)
+   ========================================================================== */
+
+/* ========================================= */
+/* Star Rating UI Core */
+/* Used in: student/feedback.php, host/feedback.php */
+/* ========================================= */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse; /* Allows hover state to light up previous stars via CSS sibling selectors */
+    justify-content: flex-end;
+    gap: 4px;
+    align-items: center;
+}
+
+/* Use !important + multi-property hide to override Bootstrap 5 resets */
+.star-rating input[type="radio"] {
+    position: absolute !important;
+    opacity: 0 !important; /* Hides original radio buttons while keeping them accessible */
+    width: 0 !important;
+    height: 0 !important;
+    pointer-events: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    display: none !important;
+}
+
+.star-rating label {
+    color: rgba(255, 255, 255, 0.2); /* 20% white base color for unselected stars */
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.15s ease, transform 0.15s ease; /* Snappy 150ms transition for hover effects */
+    line-height: 1;
+    display: block;
+    padding: 0 2px;
+    margin: 0;
+    /* Prevent Bootstrap form-label styles from interfering */
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: normal;
+}
+
+/* Hover + checked cascade (row-reverse makes "left" highlights work) */
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type="radio"]:checked ~ label {
+    color: var(--gold-primary, #FACC15); /* Lights up stars in gold when hovered or selected */
+    transform: scale(1.2); /* Enlarges hovered stars by 20% */
+}
+
+/* ========================================= */
+/* Rated Stars (Read-Only Display) */
+/* Used in: Lists of previously submitted feedback */
+/* ========================================= */
+.rated-stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.rated-stars i {
+    color: var(--gold-primary, #FACC15);
+    font-size: 1rem;
+}
+
+.rated-stars i.empty {
+    color: rgba(255, 255, 255, 0.15); /* 15% white for unfilled stars in read-only mode */
+}
+
+/* ========================================= */
+/* Feedback Form Layout & Grid */
+/* Used in: student/feedback.php, host/feedback.php */
+/* ========================================= */
+.feedback-form-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Vertical spacing between stars and textarea */
+}
+
+.feedback-star-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.feedback-submit-row {
+    display: flex;
+    justify-content: flex-end; /* Aligns the submit button to the right */
+}
+
+/* ========================================= */
+/* Comment Textarea Input */
+/* Used in: feedback submission forms */
+/* ========================================= */
+.comment-input {
+    background: rgba(0, 0, 0, 0.25) !important; /* 25% black transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.08) !important; /* Subtle 8% white border */
+    color: #F8FAFC !important;
+    border-radius: 8px !important;
+    resize: none; /* Prevents users from manually resizing the textarea */
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-size: 0.85rem !important;
+    width: 100%;
+}
+
+.comment-input::placeholder {
+    color: rgba(255, 255, 255, 0.3) !important; /* Faded 30% white placeholder text */
+}
+
+.comment-input:focus {
+    border-color: rgba(250, 204, 21, 0.5) !important; /* 50% gold border on focus */
+    box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.08) !important; /* Soft gold glow ring on focus */
+    background: rgba(0, 0, 0, 0.35) !important; /* Darkens background slightly to 35% black when focused */
+    outline: none !important;
+}
+
+/* ========================================= */
+/* Submitted Comment Display */
+/* Used in: viewing past feedback */
+/* ========================================= */
+.submitted-comment {
+    background: rgba(250, 204, 21, 0.05); /* 5% gold background tint */
+    border-left: 3px solid var(--gold-primary, #FACC15); /* Solid gold accent line on the left */
+    padding: 8px 12px;
+    border-radius: 0 8px 8px 0; /* Rounds only the right corners, keeping the left edge flat against the border */
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55); /* 55% white text for readability */
+    margin-top: 6px;
+    font-style: italic;
+    line-height: 1.5;
+}

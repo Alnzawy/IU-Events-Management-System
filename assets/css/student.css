@@ -1,0 +1,70 @@
+/* ==========================================================================
+   STUDENT.CSS - Student Portal Specific Styles
+   Crystal Cards, Grid Labels
+   Used in: student/*.php
+   ========================================================================== */
+
+/* ========================================= */
+/* Student Crystal AI Event Cards */
+/* Used in: student/index.php */
+/* ========================================= */
+.crystal-card {
+    background: rgba(255, 255, 255, 0.02); border-radius: 32px; border: 1px solid rgba(255, 255, 255, 0.06); /* 2% white background, 6% border for glass effect */
+    backdrop-filter: blur(20px); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); /* Extreme 20px blur with bouncy transition */
+    overflow: hidden; display: flex; flex-direction: column; height: 100%;
+}
+.crystal-card:hover {
+    transform: translateY(-12px); background: rgba(255, 255, 255, 0.04); /* Elevates 12px and slightly brightens background */
+    border-color: rgba(16, 185, 129, 0.3); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); /* 30% emerald border and massive 50% black shadow */
+}
+.card-lg .crystal-img { height: 180px; }
+.card-sm .crystal-img { height: 140px; }
+.crystal-img { width: 100%; object-fit: cover; filter: contrast(110%); transition: transform 0.5s ease; /* Boosts image contrast by 10% */ }
+.crystal-card:hover .crystal-img { transform: scale(1.05); /* Gentle 5% image zoom on card hover */ }
+
+.premium-tag {
+    background: rgba(16, 185, 129, 0.2); color: #10B981; padding: 0.5rem 1rem; /* 20% emerald pill background */
+    border-radius: 50px; font-size: 0.7rem; font-weight: 700;
+    border: 1px solid rgba(16, 185, 129, 0.3); backdrop-filter: blur(5px);
+}
+.card-body-wrap { padding: 1.25rem; flex-grow: 1; display: flex; flex-direction: column; }
+.ai-reason-bubble {
+    background: rgba(16, 185, 129, 0.08); border-left: 3px solid #10b981; /* 8% emerald background with solid left border */
+    padding: 8px 12px; border-radius: 8px; font-size: 0.7rem; color: #d1fae5; line-height: 1.4; backdrop-filter: blur(5px);
+}
+
+/* ========================================= */
+/* Grid Section Separator Labels */
+/* Used in: student/index.php */
+/* ========================================= */
+.grid-label {
+    font-size: 0.8rem; color: #10B981; text-transform: uppercase; font-weight: 800; letter-spacing: 4px; /* Widely spaced emerald caps */
+    margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1.5rem;
+}
+.grid-label .line { height: 1px; flex-grow: 1; background: linear-gradient(90deg, #10B981, transparent); /* Emerald line fading to transparent right */ }
+
+/* ========================================= */
+/* Student Profile Interest Tags */
+/* Used in: student/profile.php */
+/* ========================================= */
+.interest-hub { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 1.5rem; }
+.interest-tag {
+    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.7);
+    padding: 0.6rem 1.2rem; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; font-size: 0.8rem; font-weight: 500;
+    display: inline-flex; align-items: center; margin-bottom: 10px; margin-right: 10px;
+}
+.interest-tag:hover { background: rgba(250, 204, 21, 0.1); border-color: rgba(250, 204, 21, 0.3); color: var(--gold-primary); /* Gold hover state */ }
+.btn-check:checked + .interest-tag { background: rgba(250, 204, 21, 0.2); border-color: var(--gold-primary); color: var(--gold-primary); box-shadow: 0 0 15px rgba(250, 204, 21, 0.3); /* 20% gold active state with 30% glow */ }
+
+/* ========================================= */
+/* Generic Profile Interest Toggle Buttons */
+/* Used in: student/profile.php */
+/* ========================================= */
+.btn-check:checked + .btn-outline-secondary {
+    background-color: rgba(250, 204, 21, 0.1) !important; /* Forces 10% gold background when checked */
+    border-color: var(--gold-primary) !important;
+    color: var(--gold-primary) !important;
+}
+.btn-check:checked + .btn-outline-secondary i {
+    color: var(--gold-primary) !important;
+}

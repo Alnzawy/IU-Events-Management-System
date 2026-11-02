@@ -1,0 +1,159 @@
+/* ==========================================================================
+   SIDEBAR.CSS - Portal Sidebar Navigation
+   Used in: All portal pages (Host, Organizer, Student)
+   ========================================================================== */
+
+/* ========================================= */
+/* Main Sidebar Layout Container */
+/* Used in: Portal layout wrappers */
+/* ========================================= */
+.sidebar {
+    width: 280px;
+    height: 100vh; /* Full viewport height */
+    position: fixed; /* Locks sidebar to the left side of screen */
+    top: 0;
+    left: 0;
+    background-color: var(--card-bg);
+    border-right: var(--border-subtle);
+    z-index: 1000; /* Keeps sidebar above main content */
+    transition: var(--transition);
+    padding: 1.5rem;
+}
+
+.main-content {
+    margin-left: 280px; /* Pushes main content right to accommodate the 280px sidebar */
+    padding: 2.5rem;
+    min-height: 100vh;
+    background-color: var(--bg-dark);
+    transition: var(--transition);
+}
+
+/* ========================================= */
+/* Sidebar Navigation Links */
+/* Used in: Sidebar menus */
+/* ========================================= */
+.sidebar .nav-link {
+    color: var(--text-muted) !important;
+    padding: 0.8rem 1.2rem !important;
+    border-radius: 12px !important;
+    margin-bottom: 0.5rem;
+    transition: var(--transition) !important;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Space between icon and text */
+}
+
+.sidebar .nav-link i {
+    font-size: 1.2rem;
+    width: 24px; /* Fixed width for icons to align text perfectly */
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: var(--primary-color) !important; /* Highlights active/hovered link */
+    color: white !important;
+}
+
+.sidebar .nav-link.active i {
+    color: white !important;
+}
+
+.sidebar h4,
+.sidebar .fs-4 {
+    color: var(--accent-color) !important;
+}
+
+/* ========================================= */
+/* Sidebar Logout Link */
+/* Used in: Bottom of sidebar */
+/* ========================================= */
+.sidebar-logout {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    padding: 0.5rem 0;
+}
+
+.sidebar-logout:hover {
+    color: #ef4444; /* Changes to red on hover to indicate destructive action */
+}
+
+.sidebar-logout i {
+    color: #ef4444;
+}
+
+/* ========================================= */
+/* Standard Dashboard Cards */
+/* Used in: Portal dashboards */
+/* ========================================= */
+.card-custom {
+    background: var(--card-bg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important; /* 8% white subtle border */
+    border-radius: var(--border-radius) !important;
+    transition: var(--transition) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Base 20% black shadow */
+}
+
+.card-custom:hover {
+    transform: translateY(-5px); /* Elevates card by 5px on hover */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Intensifies shadow to 30% black */
+}
+
+/* ========================================= */
+/* Colored Stat Icons in Dashboards */
+/* Used in: Statistic summary cards */
+/* ========================================= */
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05); /* 5% white base background */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.stat-icon-emerald {
+    background: rgba(16, 185, 129, 0.1); /* 10% emerald background tint */
+    color: #10b981;
+}
+
+.stat-icon-gold {
+    background: rgba(212, 175, 55, 0.1); /* 10% gold background tint */
+    color: #D4AF37;
+}
+
+
+.stat-icon-blue {
+    background: rgba(59, 130, 246, 0.1); /* 10% blue background tint */
+    color: #3b82f6;
+}
+
+.stat-icon-violet {
+    background: rgba(139, 92, 246, 0.1); /* 10% violet background tint */
+    color: #8b5cf6;
+}
+
+/* ========================================= */
+/* Responsive Tablet & Mobile Sidebar */
+/* Used in: Viewports under 992px */
+/* ========================================= */
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%); /* Hides sidebar off-screen to the left */
+    }
+
+    .main-content {
+        margin-left: 0; /* Removes sidebar margin to utilize full width */
+    }
+
+    .sidebar.active {
+        transform: translateX(0); /* Slides sidebar back in when active */
+    }
+}

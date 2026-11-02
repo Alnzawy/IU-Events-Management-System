@@ -1,0 +1,380 @@
+/* ==========================================================================
+   SECTION 3: AUTHENTICATION (Login / Register)
+   Used in: login.php
+   ========================================================================== */
+
+/* ========================================= */
+/* Auth Layout Wrapper */
+/* Used in: login.php */
+/* ========================================= */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-main);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-container {
+    background: var(--card-bg);
+    border-radius: 30px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4); /* Deep 40% black shadow for a floating card effect */
+    position: relative;
+    overflow: hidden; /* Hides the sliding panels when they move out of bounds */
+    width: 1000px;
+    max-width: 100%;
+    min-height: 600px;
+    border: 1px solid var(--glass-border);
+}
+
+/* ========================================= */
+/* Auth Sliding Panels Logic */
+/* Used in: login.php for toggling login/register */
+/* ========================================= */
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out; /* Smooth 600ms transition for panel slides */
+}
+
+.sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2; /* Keeps sign-in above sign-up initially */
+}
+
+.auth-container.right-panel-active .sign-in-container {
+    transform: translateX(100%); /* Slides sign-in panel completely to the right */
+}
+
+.sign-up-container {
+    left: 0;
+    width: 50%;
+    opacity: 0; /* Hides sign-up panel initially */
+    z-index: 1;
+}
+
+.auth-container.right-panel-active .sign-up-container {
+    transform: translateX(100%); /* Moves sign-up panel into view */
+    opacity: 1; /* Fades in sign-up panel */
+    z-index: 5; /* Brings sign-up to the forefront */
+    animation: show 0.6s;
+}
+
+@keyframes show {
+
+    0%,
+    49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+/* ========================================= */
+/* Auth Form Elements */
+/* Used in: login.php forms */
+/* ========================================= */
+.auth-form {
+    background: var(--card-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+
+.auth-form h1 {
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+}
+
+.auth-input-group {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.auth-input-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase; /* Creates a clean, structured label look */
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+/* ========================================= */
+/* Alert Boxes (Error & Success) */
+/* Used in: login.php alert messages */
+/* ========================================= */
+.error-alert {
+    background: rgba(220, 38, 38, 0.15); /* 15% red tint background */
+    border: 1px solid rgba(220, 38, 38, 0.3); /* 30% red border */
+    color: #f87171;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: shake 0.5s ease-in-out; /* Attention-grabbing shake animation */
+}
+
+.success-alert {
+    background: rgba(16, 185, 129, 0.15); /* 15% emerald tint background */
+    border: 1px solid rgba(16, 185, 129, 0.3); /* 30% emerald border */
+    color: var(--primary-color);
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* ========================================= */
+/* Form Controls (Inputs) */
+/* Used in: login.php input fields */
+/* ========================================= */
+.form-control-dark {
+    background: rgba(15, 23, 42, 0.6); /* 60% opacity dark slate background */
+    border: var(--border-light);
+    color: white !important;
+    border-radius: 15px;
+    padding: 1rem 1.2rem;
+    width: 100%;
+    transition: var(--transition);
+}
+
+.form-control-dark:focus {
+    background: rgba(15, 23, 42, 0.8); /* Darkens slightly on focus */
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(16, 185, 129, 0.2); /* 20% emerald glow on focus */
+}
+
+/* ========================================= */
+/* Overlay Sliding Panel */
+/* Used in: login.php (The Gold Welcome Panel) */
+/* ========================================= */
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100; /* Keeps overlay above forms */
+}
+
+.auth-container.right-panel-active .overlay-container {
+    transform: translateX(-100%); /* Slides overlay completely to the left */
+}
+
+.overlay {
+    background: var(--gradient-gold); /* Solid gold gradient background */
+    color: #1a2332; /* Dark text for contrast against gold */
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.auth-container.right-panel-active .overlay {
+    transform: translateX(50%); /* Counters the container movement to keep content aligned */
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+    transform: translateX(-20%); /* Off-center position initially */
+}
+
+.auth-container.right-panel-active .overlay-left {
+    transform: translateX(0); /* Brings left text to center when active */
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.auth-container.right-panel-active .overlay-right {
+    transform: translateX(20%); /* Pushes right text off-center when inactive */
+}
+
+.overlay-panel h1 {
+    color: #1a2332;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.overlay-panel p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* ========================================= */
+/* Ghost Buttons */
+/* Used in: login.php (Toggle buttons on overlay) */
+/* ========================================= */
+.btn-ghost {
+    background: transparent;
+    border: 2px solid #1a2332; /* Dark outline on gold background */
+    color: #1a2332;
+    padding: 0.8rem 2.5rem;
+    border-radius: 25px; /* Pill-shaped button */
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.btn-ghost:hover {
+    background: #1a2332; /* Fills button with dark color on hover */
+    color: var(--accent-color); /* Gold text on hover */
+}
+
+/* ========================================= */
+/* Browser Autofill Fixes */
+/* Used in: login.php input fields */
+/* ========================================= */
+/* Fix for ugly browser autofill background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 40px #1a2332 inset !important; /* Forces dark background over default yellow/white autofill */
+    -webkit-text-fill-color: white !important; /* Forces white text on autofill */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ========================================= */
+/* Auth Footer Links */
+/* Used in: login.php below inputs */
+/* ========================================= */
+.auth-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.auth-footer a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.auth-footer a:hover {
+    color: var(--primary-color); /* Emerald highlight on hover */
+}
+
+.back-link {
+    font-weight: 600;
+}
+
+.auth-toggle-mobile {
+    display: none; /* Hidden on desktop, handled by sliding panel */
+}
+
+/* ========================================= */
+/* Mobile Responsiveness */
+/* Used in: Viewports under 768px */
+/* ========================================= */
+/* --- Mobile: Auth --- */
+@media (max-width: 768px) {
+    .auth-container {
+        min-height: auto;
+        border-radius: 20px;
+    }
+
+    .overlay-container {
+        display: none; /* Entirely hides the sliding overlay on mobile */
+    }
+
+    .sign-in-container,
+    .sign-up-container {
+        width: 100%; /* Forms take full width on mobile */
+        position: relative;
+    }
+
+    .auth-container.right-panel-active .sign-in-container {
+        transform: none;
+        display: none; /* Toggles visibility via display instead of transform */
+    }
+
+    .auth-container.right-panel-active .sign-up-container {
+        transform: none;
+        width: 100%;
+    }
+
+    .auth-form {
+        padding: 3rem 2rem;
+    }
+
+    .auth-toggle-mobile {
+        display: block !important; /* Shows basic text links to toggle mode on mobile */
+        margin-top: 2rem;
+        color: var(--text-muted);
+    }
+
+    .auth-toggle-mobile span {
+        color: var(--accent-color);
+        font-weight: 600;
+        cursor: pointer;
+    }
+}

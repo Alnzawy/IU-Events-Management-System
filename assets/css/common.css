@@ -1,0 +1,489 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================================================
+   SECTION 1: ROOT VARIABLES & RESET
+   ========================================================================== */
+:root {
+    /* Theme: Obsidian & Gold (Premium Portal) */
+    --obsidian: #0B1121;
+    --obsidian-card: #151E32;
+    --obsidian-border: rgba(255, 255, 255, 0.05);
+    
+    --gold-primary: #FACC15;
+    --gold-glow: rgba(250, 204, 21, 0.15);
+    
+    --text-main: #F8FAFC;
+    --text-muted: #94A3B8;
+
+    /* Legacy / Semantic Colors */
+    --primary-color: #10B981;
+    --secondary-color: #D4AF37;
+    --accent-color: #D4AF37;
+    --dark-bg: #0B1121;
+    --card-bg: #151E32;
+    --text-light: #F8FAFC;
+
+    /* Glass / Blur */
+    --glass-bg: rgba(21, 30, 50, 0.9);
+    --glass-border: rgba(250, 204, 21, 0.2);
+
+    /* Gradients */
+    --hero-bg: #0B1121;
+    --gradient-main: linear-gradient(135deg, #151E32 0%, #0B1121 100%);
+    --gradient-gold: linear-gradient(135deg, #FDE047 0%, #EAB308 100%);
+    --gradient-overlay: linear-gradient(to bottom, rgba(11, 17, 33, 0) 0%, rgba(11, 17, 33, 0.95) 100%);
+
+    /* Shared Tokens */
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+    --border-subtle: 1px solid rgba(255, 255, 255, 0.05);
+    --border-light: 1px solid rgba(255, 255, 255, 0.1);
+
+    /* Organizer accent */
+    --organizer-glass-accent: rgba(16, 185, 129, 0.2);
+
+    /* Analytics Chart Colors */
+    --chart-primary: #8b5cf6;
+    --chart-secondary: #06b6d4;
+    --chart-success: #10b981;
+    --chart-warning: #f59e0b;
+    --chart-danger: #ef4444;
+    --chart-bg-glass: rgba(255, 255, 255, 0.08);
+    --chart-border-glass: rgba(255, 255, 255, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    line-height: 1.6;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 40%);
+    background-attachment: fixed;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   SECTION 5: UNIFIED COMPONENTS
+   Buttons, Tables, Badges, Form Controls, Empty States
+   Used across ALL portals
+   ========================================================================== */
+
+/* --- Buttons --- */
+
+/* Primary button (green) — used for main actions */
+.btn-login {
+    background: var(--primary-color);
+    color: white !important;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: var(--transition);
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+    color: white !important;
+}
+
+/* Gold accent button — for special actions like "Issue Certificates" */
+.btn-gold {
+    background: var(--gradient-gold);
+    color: #1a2332 !important;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    color: #1a2332 !important;
+}
+
+/* Glass button — small icon actions (edit/delete) */
+.btn-glass {
+    background: rgba(255, 255, 255, 0.05);
+    border: var(--border-light);
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.btn-glass:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+}
+
+/* Danger glass button */
+.btn-glass-danger {
+    color: #ef4444;
+}
+
+.btn-glass-danger:hover {
+    background: #ef4444;
+    border-color: #ef4444;
+    color: white;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+
+/* Joined button (green disabled state) */
+.btn-joined-glass {
+    background: #10B981 !important;
+    color: #fff !important;
+    border: 1px solid #10B981 !important;
+    font-weight: 600;
+    cursor: default;
+    opacity: 1 !important;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+}
+
+/* Full / no seats button (red disabled state) */
+.btn-full-glass {
+    background: rgba(239, 68, 68, 0.2) !important;
+    color: #EF4444 !important;
+    border: 1px solid rgba(239, 68, 68, 0.4) !important;
+    font-weight: 600;
+    cursor: not-allowed;
+    opacity: 1 !important;
+}
+
+/* --- Tables (table-modern) --- */
+.table-modern {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+
+.table-modern thead th {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 20px;
+    border: none;
+}
+
+.table-modern tbody tr {
+    background: rgba(255, 255, 255, 0.03);
+    transition: var(--transition);
+}
+
+.table-modern tbody tr:hover {
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateX(5px);
+}
+
+.table-modern tbody td {
+    padding: 16px 20px;
+    border: none;
+    vertical-align: middle;
+    color: var(--text-light);
+}
+
+.table-modern tbody tr td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.table-modern tbody tr td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* Date wrapper used inside tables */
+.date-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.date-icon {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+/* Category badge used in tables */
+.category-badge {
+    background: var(--organizer-glass-accent);
+    color: var(--primary-color);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+
+/* Unified badge pills (used in attendance table, etc.) */
+.app-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.app-badge-success {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.app-badge-muted {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-badge-warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.app-badge-danger {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* --- Form Controls (Dark Theme) --- */
+.app-form-select {
+    background: rgba(15, 23, 42, 0.6);
+    border: var(--border-light);
+    color: #fff;
+    border-radius: 12px;
+    padding: 0.6rem 1rem;
+    transition: var(--transition);
+}
+
+.app-form-select:focus {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(16, 185, 129, 0.2);
+    color: #fff;
+}
+
+/* Dark dropdown options */
+select.form-select option,
+.app-form-select option {
+    background-color: #0f172a;
+    color: #fff;
+}
+
+/* --- Empty State --- */
+.app-empty-state {
+    background: transparent;
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    text-align: center;
+}
+
+.app-empty-state i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.25;
+    color: white;
+}
+
+.app-empty-state h4 {
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.app-empty-state p {
+    color: var(--text-muted);
+    margin-bottom: 0;
+}
+
+/* Card with emerald border accent */
+.border-emerald {
+    border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+
+/* --- Utility: text colors for gold/emerald icons --- */
+.text-emerald {
+    color: #10B981 !important;
+}
+
+.text-gold {
+    color: #D4AF37 !important;
+}
+
+/* Time display small text */
+.time-text {
+    font-size: 0.9rem;
+    color: var(--chart-warning);
+}
+
+/* Bidirectional Text Support */
+.bidi-text {
+    unicode-bidi: plaintext;
+    text-align: start;
+}
+
+/* ==========================================================================
+   SECTION 10: ANIMATIONS & RESPONSIVE
+   ========================================================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   SECTION 8: UNIFIED OBSIDIAN PREMIUM PORTAL STYLES
+   Used across Student, Organizer, and Host Portals
+   ========================================================================== */
+
+
+
+/* ── Layout & Background ── */
+body.portal-body {
+    background-color: var(--obsidian);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+}
+
+.main-content {
+    background: radial-gradient(circle at top right, rgba(250,204,21,0.03), transparent 40%), var(--obsidian);
+}
+
+.scroll-main { margin-left: 280px; min-height: 100vh; display: flex; flex-direction: column; padding: 1.5rem 2rem; gap: 1.5rem; overflow-y: auto; }
+.dash-main { margin-left: 280px; height: 100vh; display: flex; flex-direction: column; padding: 1.5rem 2rem; gap: 1.5rem; overflow: hidden; }
+
+/* ── Headers ── */
+.page-header {
+    flex-shrink: 0; background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+    border-radius: 14px; padding: 1rem 1.75rem; display: flex; align-items: center; justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2); margin-bottom: 1.5rem;
+}
+.page-header.bordered { border-bottom: 1px solid var(--obsidian-border); padding-bottom: 1.5rem; background: transparent; border: none; box-shadow: none; align-items: flex-end; }
+.page-header.no-bg { background: none; border: none; box-shadow: none; padding: 0; align-items: flex-end; margin-bottom: 1rem; }
+.page-title { font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--text-main); margin: 0 0 2px 0; letter-spacing: -0.5px; line-height: 1.1; }
+.page-header:not(.bordered) .page-title { font-size: 1.8rem; }
+.page-header.no-bg .page-title { font-size: 2rem; }
+.title-accent { background: linear-gradient(135deg, #FDE047, #EAB308); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+.page-sub, .page-subtitle { font-size: 0.8rem; color: var(--text-muted); margin: 0; font-weight: 500; }
+.page-header.bordered .page-sub { font-size: 0.95rem; margin-top: 6px; }
+
+/* ── KPI Cards ── */
+.kpi-row { flex-shrink: 0; display: flex; gap: 1.25rem; margin-bottom: 1.5rem; }
+.kpi-card {
+    flex: 1; background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+    border-radius: 16px; padding: 1.5rem; display: flex; align-items: center; gap: 1.25rem;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
+    position: relative; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+.kpi-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); }
+.kpi-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); border-color: rgba(255,255,255,0.1); }
+.kpi-icon {
+    width: 54px; height: 54px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.kpi-info { display: flex; flex-direction: column; }
+.kpi-val { font-family: 'Outfit', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--text-main); line-height: 1; margin-bottom: 6px; letter-spacing: -1px; }
+.kpi-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+.kpi-sub { font-size: 0.75rem; color: #64748B; margin-top: 4px; font-weight: 500; }
+
+/* Icon Colors */
+.ic-events, .ic-prev { color: #60A5FA; box-shadow: inset 0 0 20px rgba(96,165,250,0.1); }
+.ic-students, .ic-today { color: #34D399; box-shadow: inset 0 0 20px rgba(52,211,153,0.1); }
+.ic-hosts, .ic-users { color: #A78BFA; box-shadow: inset 0 0 20px rgba(167,139,250,0.1); }
+.ic-certs, .ic-upcoming { color: var(--gold-primary); box-shadow: inset 0 0 20px var(--gold-glow); }
+
+/* ── Forms ── */
+.form-label { color: var(--text-muted); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; }
+.form-control, .form-select {
+    background: rgba(0,0,0,0.2) !important; border: 1px solid var(--obsidian-border) !important;
+    color: var(--text-main) !important; border-radius: 8px; padding: 0.6rem 0.8rem; font-size: 1rem;
+    transition: all 0.3s;
+}
+.form-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2394A3B8' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 0.75rem center !important;
+    background-size: 16px 12px !important;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 2.25rem !important;
+}
+.form-select option {
+    background-color: #0f172a;
+    color: #fff;
+}
+.form-control:focus, .form-select:focus { border-color: rgba(250,204,21,0.5) !important; box-shadow: 0 0 0 4px rgba(250,204,21,0.1) !important; }
+.form-control[readonly], .form-select[readonly] { background: rgba(0,0,0,0.5) !important; opacity: 0.6; cursor: not-allowed; }
+
+.btn-gold {
+    background: linear-gradient(135deg, #FACC15, #D97706); border: none; color: #000;
+    font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.95rem; padding: 0.7rem 1.2rem;
+    border-radius: 8px; transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(250,204,21,0.3); color: #000; }
+
+/* ── Alerts ── */
+.alert-obsidian { background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.2); color: #34D399; border-radius: 10px; font-weight: 500; font-size: 0.9rem; padding: 1rem; }
+.alert-obsidian.error { background: rgba(248, 113, 113, 0.1); border: 1px solid rgba(248, 113, 113, 0.2); color: #F87171; }
+
+/* ── Badges ── */
+.alltime-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    border-radius: 20px; padding: 6px 14px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+    background: var(--gold-glow); border: 1px solid rgba(250, 204, 21, 0.25); color: var(--gold-primary); letter-spacing: 1px;
+}
+
+/* ── Status Indicator Dot ── */
+.st-badge { font-size: 0.68rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; display: inline-flex; align-items: center; gap: 5px; }
+.st-badge.upcoming { background: rgba(59,130,246,0.12); color: #93c5fd; border: 1px solid rgba(59,130,246,0.25); }
+.st-badge.attended { background: rgba(16,185,129,0.12); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.25); }
+.st-badge.missed   { background: rgba(239,68,68,0.12);  color: #fca5a5; border: 1px solid rgba(239,68,68,0.25); }
+.st-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; animation: pulse 2s infinite; }
+.upcoming .st-dot { background: #3b82f6; }
+.attended .st-dot { background: #10b981; }
+.missed   .st-dot { background: #ef4444; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+
+.text-truncate-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; box-orient: vertical; overflow: hidden; }

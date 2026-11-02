@@ -1,0 +1,223 @@
+/* ==========================================================================
+   CERTIFICATES.CSS - Certificate View Styles ONLY
+   Used in: student/certificate_view.php
+   ========================================================================== */
+
+/* ========================================= */
+/* Certificate View Body & Actions */
+/* Used in: student/certificate_view.php */
+/* ========================================= */
+.cert-body {
+    margin: 0;
+    padding: 0;
+    background: #525659; /* Sets a dark neutral background outside the certificate paper */
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.actions-bar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Ensures action buttons stay floating above the certificate */
+}
+
+.btn-download {
+    background: var(--cert-primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Adds a 30% opacity drop shadow for floating effect */
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Creates spacing between the icon and text */
+}
+
+.btn-download:hover {
+    opacity: 0.9;
+}
+
+/* ========================================= */
+/* Main Certificate Paper */
+/* Used in: student/certificate_view.php */
+/* ========================================= */
+.certificate-wrapper {
+    padding: 40px;
+    display: flex;
+    justify-content: center; /* Horizontally centers the certificate on the page */
+}
+
+#certificate {
+    width: 1120px;
+    height: 780px;
+    background: white;
+    position: relative;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5); /* Creates a heavy, realistic 50% opacity shadow around the paper */
+    overflow: hidden;
+    border: 20px solid transparent;
+    background-image: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('https://www.transparenttextures.com/patterns/natural-paper.png'); /* Overlays a subtle paper texture beneath a 95% white gradient */
+}
+
+/* ========================================= */
+/* Ornamental Borders */
+/* Used in: student/certificate_view.php */
+/* ========================================= */
+.border-outer {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 4px double var(--cert-primary); /* Creates a classic double-line border */
+    pointer-events: none; /* Prevents the border from interfering with clicks/selection */
+}
+
+.border-inner {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
+    border: 1px solid var(--cert-primary); /* Creates a delicate single-line inner border */
+    pointer-events: none;
+}
+
+/* ========================================= */
+/* Certificate Typography & Content */
+/* Used in: student/certificate_view.php */
+/* ========================================= */
+.cert-content {
+    text-align: center;
+    padding: 30px 60px 10px;
+    position: relative;
+    z-index: 2; /* Ensures text renders above the watermark */
+}
+
+.cert-logo {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+.cert-title {
+    font-family: 'Cinzel', serif;
+    font-size: 42px;
+    color: var(--cert-secondary);
+    margin-bottom: 5px;
+    letter-spacing: 5px; /* Widens the text for a premium look */
+}
+
+.cert-subtitle {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.cert-presented-to {
+    font-size: 18px;
+    font-style: italic;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.cert-student-name {
+    font-family: 'Pinyon Script', cursive; /* Elegant cursive font for the name */
+    font-size: 60px;
+    color: var(--cert-secondary);
+    margin-bottom: 5px;
+    border-bottom: 1px solid #ccc; /* Creates the underline effect for the name */
+    display: inline-block;
+    min-width: 400px;
+}
+
+.cert-event-details {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 10px;
+}
+
+.cert-event-details strong {
+    color: var(--cert-secondary);
+    font-size: 1.2em;
+}
+
+/* ========================================= */
+/* Footer, Signatures & Watermarks */
+/* Used in: student/certificate_view.php */
+/* ========================================= */
+.cert-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Aligns the signature lines perfectly at the bottom */
+    margin-top: 5px;
+    padding: 0 100px;
+    background: transparent !important;
+    border: none !important;
+}
+
+.cert-signature-box {
+    text-align: center;
+    width: 250px;
+}
+
+.cert-signer-name {
+    font-weight: bold;
+    font-size: 15px;
+    color: #333;
+    border-top: 1px solid var(--cert-primary); /* Creates the line above the typed name */
+    padding-top: 8px;
+    margin-top: 10px;
+    white-space: nowrap;
+}
+
+.cert-cursive-signature {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 42px;
+    color: var(--cert-secondary);
+    display: block;
+    opacity: 0.8; /* Reduces opacity to simulate faded ink */
+    height: 45px;
+    line-height: 45px;
+    margin-bottom: 2px;
+    white-space: nowrap; /* Prevents cursive signature from wrapping */
+}
+
+.cert-signer-role {
+    font-size: 13px;
+    color: #777;
+}
+
+.cert-id {
+    position: absolute;
+    bottom: 30px;
+    left: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10px;
+    color: #ccc;
+    letter-spacing: 1px;
+}
+
+.cert-category-icon {
+    font-size: 40px;
+    color: var(--cert-primary);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.cert-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfectly centers the watermark horizontally and vertically */
+    font-size: 150px;
+    color: rgba(0,0,0,0.03); /* Faint 3% black opacity for subtle background watermark */
+    pointer-events: none;
+    z-index: 1; /* Keeps the watermark below the text content (z-index 2) */
+    font-family: 'Cinzel';
+}

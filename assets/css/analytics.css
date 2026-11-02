@@ -1,0 +1,220 @@
+/* ==========================================================================
+   ANALYTICS.CSS
+   Dashboards, Charts, Statistics, Event Reports
+   Used in: organizer/index.php, organizer/analytics.php, organizer/event_report.php
+   ========================================================================== */
+
+/* ========================================= */
+/* Analytics Card Base */
+/* Used in: organizer/index.php, organizer/analytics.php */
+/* ========================================= */
+.analytics-card {
+    background: rgba(45, 55, 72, 0.3); /* Adds a 30% opacity slate blue background for glass effect */
+    backdrop-filter: blur(20px); /* Applies a strong 20px blur to the content behind the card */
+    border: 1px solid var(--chart-border-glass);
+    border-radius: 20px !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth elastic easing for hover states */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); /* Deep, soft shadow for elevation */
+}
+
+.analytics-card:hover {
+    background: rgba(255, 255, 255, 0.05); /* Lightens the card on hover with a 5% white overlay */
+    border-color: var(--chart-primary);
+    transform: translateY(-8px); /* Elevates the card 8px upwards on hover */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4); /* Intensifies the shadow to simulate floating */
+}
+
+/* ========================================= */
+/* Chart Colors Utilities */
+/* Used in: analytics text elements */
+/* ========================================= */
+.text-success {
+    color: var(--chart-success) !important;
+}
+
+.text-warning {
+    color: var(--chart-warning) !important;
+}
+
+.text-danger {
+    color: var(--chart-danger) !important;
+}
+
+.bg-success {
+    background-color: var(--chart-success) !important;
+}
+
+.bg-warning {
+    background-color: var(--chart-warning) !important;
+}
+
+.bg-danger {
+    background-color: var(--chart-danger) !important;
+}
+
+/* ========================================= */
+/* Charts & Dashboard Cards Grid */
+/* Used in: organizer/analytics.php */
+/* ========================================= */
+.charts-row { flex: 1; min-height: 0; display: flex; gap: 1.25rem; /* Creates a flex row with 1.25rem spacing */ }
+.chart-card, .a-card {
+    background: var(--obsidian-card); border: 1px solid var(--obsidian-border);
+    border-radius: 16px; padding: 1.25rem 1.5rem; display: flex; flex-direction: column; /* Stacks inner content vertically */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2); position: relative;
+}
+.chart-card { flex: 1; min-height: 0; /* Prevents flex children from overflowing their container */ }
+.chart-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
+.chart-title, .card-title { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin: 0 0 4px 0; }
+.chart-sub, .card-sub { font-size: 0.8rem; color: var(--text-muted); margin: 0; }
+.chart-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(255,255,255,0.03); display: flex; align-items: center; justify-content: center; color: var(--gold-primary); /* Centers the icon perfectly */ }
+.chart-wrap { flex: 1; min-height: 0; position: relative; width: 100%; }
+
+/* ========================================= */
+/* Toast Notifications */
+/* Used in: system-wide alerts */
+/* ========================================= */
+.toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 1055; display: flex; flex-direction: column; gap: 10px; /* Pins container to bottom-right above other elements */ }
+.toast-notification { display: flex; align-items: center; padding: 12px 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); backdrop-filter: blur(10px); animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); min-width: 300px; transition: opacity 0.3s; /* Adds blur and slide-in animation */ }
+.toast-error { background: rgba(220, 53, 69, 0.15); border: 1px solid rgba(220, 53, 69, 0.3); border-left: 4px solid #dc3545; /* 15% red opacity with a solid left accent border */ }
+.toast-icon { font-size: 1.2rem; margin-right: 12px; }
+.toast-error .toast-icon { color: #dc3545; }
+.toast-content { font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #f8f9fa; line-height: 1.4; flex-grow: 1; /* Allows text content to take remaining space */ }
+@keyframes slideInRight { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+/* ========================================= */
+/* Main Layout Grid for Reports */
+/* Used in: organizer/event_report.php */
+/* ========================================= */
+.report-grid { flex: 1; display: flex; gap: 1.5rem; min-height: min-content; }
+.left-panel { flex: 1.2; display: flex; flex-direction: column; gap: 1.5rem; /* Takes 60% of the available width */ }
+.right-panel { flex: 0.8; display: flex; flex-direction: column; gap: 1.5rem; /* Takes 40% of the available width */ }
+
+/* ========================================= */
+/* Event Premium Ticket Header */
+/* Used in: organizer/event_report.php */
+/* ========================================= */
+.event-header {
+    flex-shrink: 0; background: linear-gradient(135deg, var(--obsidian-card) 0%, #1E293B 100%); /* Premium dark slate gradient background */
+    border: 1px solid rgba(250, 204, 21, 0.3); border-radius: 20px; padding: 1.5rem; position: relative; overflow: hidden; /* Clips the decorative circle inside */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.event-header::before {
+    content:''; position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; /* Creates a decorative circle */
+    background: radial-gradient(circle, rgba(250,204,21,0.08) 0%, transparent 70%); pointer-events: none; /* Soft 8% gold radial glow */
+}
+.badge-wrap { display: flex; gap: 12px; margin-bottom: 1rem; }
+.badge-cat { background: rgba(52, 211, 153, 0.1); color: #34D399; padding: 6px 14px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(52, 211, 153, 0.2); /* 10% emerald background for category badge */ }
+.badge-cert { background: rgba(250, 204, 21, 0.1); color: var(--gold-primary); padding: 6px 14px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border: 1px solid rgba(250, 204, 21, 0.2); /* 10% gold background for certificate badge */ }
+
+.ev-title { font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; letter-spacing: -0.5px; line-height: 1.2;}
+
+.ev-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; /* Splits metadata into a neat 2-column grid */ }
+.ev-meta-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+.ev-meta-icon { width: 28px; height: 28px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: var(--gold-primary); font-size: 0.9rem; }
+.ev-meta-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; /* Truncates long text with an ellipsis (...) */ }
+
+/* ========================================= */
+/* Retention Funnel (Horizontal) */
+/* Used in: organizer/event_report.php */
+/* ========================================= */
+.funnel-container { display: flex; flex-direction: column; justify-content: center; flex: 1; gap: 0.75rem; }
+.funnel-container .f-stage { display: flex; flex-direction: column; gap: 4px; }
+.funnel-container .f-header { display: flex; justify-content: space-between; align-items: flex-end; }
+.funnel-container .f-label { font-size: 0.8rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 1px; }
+.funnel-container .f-meta { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
+.funnel-container .f-meta span { color: #fff; font-family: 'Outfit'; font-size: 1rem; font-weight: 800; margin-right: 6px; }
+
+.funnel-container .f-track { width: 100%; height: 12px; background: rgba(0,0,0,0.3); border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); /* 30% black background for the empty progress track */ }
+.funnel-container .f-fill { height: 100%; border-radius: 10px; transition: width 1s ease-out; /* Smooth 1-second filling animation */ }
+
+.funnel-container .f-fill.reg { background: linear-gradient(90deg, #3B82F6, #60A5FA); /* Blue gradient for registration stage */ }
+.funnel-container .f-fill.att { background: linear-gradient(90deg, #10B981, #34D399); /* Emerald gradient for attendance stage */ }
+.funnel-container .f-fill.fbk { background: linear-gradient(90deg, #EAB308, #FDE047); /* Yellow/Gold gradient for feedback stage */ }
+
+/* ========================================= */
+/* Ratings Breakdown System */
+/* Used in: organizer/event_report.php */
+/* ========================================= */
+.rating-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.5rem; row-gap: 12px; /* 2-column grid for star ratings breakdown */ }
+.rating-row { display: flex; align-items: center; gap: 12px; }
+.stars-wrap { width: 70px; display: flex; justify-content: flex-end; gap: 2px; }
+.r-star { font-size: 0.75rem; color: rgba(255,255,255,0.1); }
+.r-star.filled { color: var(--gold-primary); }
+.rate-trk { flex: 1; height: 6px; background: rgba(0,0,0,0.3); border-radius: 6px; overflow: hidden; /* Thin 6px track for star percentages */ }
+.rate-fil { height: 100%; background: var(--gold-primary); border-radius: 6px; }
+.rate-cnt { font-size: 0.85rem; color: var(--text-main); width: 20px; text-align: right; font-weight: 700; font-family: 'Outfit'; }
+
+/* ========================================= */
+/* Feedback List Section */
+/* Used in: organizer/event_report.php */
+/* ========================================= */
+.fb-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; align-content: start; max-height: 380px; overflow-y: auto; padding-right: 5px; /* Creates a responsive masonry-like grid with scrolling */ }
+.fb-list::-webkit-scrollbar { width: 4px; /* Slimmer custom scrollbar */ }
+.fb-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; /* Subtle 10% white scrollbar thumb */ }
+
+.fb-item { background: rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.02); border-radius: 12px; padding: 1.25rem; transition: background 0.2s; /* 15% black transparent box */ }
+.fb-item:hover { background: rgba(255,255,255,0.03); /* Slightly brightens on hover */ }
+.fb-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.fb-name { font-size: 0.9rem; font-weight: 700; color: var(--text-main); }
+.fb-stars { font-family: 'Outfit'; font-size: 1rem; color: var(--gold-primary); font-weight: 800; background: rgba(250,204,21,0.1); padding: 2px 8px; border-radius: 6px; /* Gold text on a 10% gold background pill */ }
+.fb-txt { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
+
+.empty-main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(15,23,42,0.4); border: 1px dashed rgba(255,255,255,0.1); border-radius: 20px; padding: 4rem; /* Flex centering with dashed border for empty states */ }
+
+/* ========================================= */
+/* Retention Funnel (Vertical/Compact Variant) */
+/* Used in: organizer/event_report.php */
+/* ========================================= */
+.funnel-wrap { display:flex; flex-direction:column; gap:0.45rem; flex:1; justify-content:center; }
+.funnel-wrap .f-stage {
+    display:flex; flex-direction:row; align-items:center; gap:0.85rem; padding:0.55rem 0.9rem;
+    background:rgba(0,0,0,0.18); border:1px solid var(--obsidian-border); border-radius:8px; /* 18% black background for funnel rows */
+}
+.funnel-wrap .f-icon { font-size:1.3rem; flex-shrink:0; width:26px; text-align:center; }
+.funnel-wrap .f-info { width:120px; flex-shrink:0; }
+.funnel-wrap .f-label { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); }
+.funnel-wrap .f-count { font-family:'Outfit',sans-serif; font-size:1.4rem; font-weight:800; color:var(--text-main); line-height:1.1; }
+.funnel-wrap .f-bar-wrap { flex:1; display:flex; flex-direction:column; gap:4px; }
+.funnel-wrap .f-track { width:100%; height:8px; background:rgba(255,255,255,0.05); border-radius:4px; overflow:hidden; }
+.funnel-wrap .f-fill { height:100%; border-radius:4px; transition:width 1.2s ease-out; /* 1.2s easing for progress fill */ }
+.funnel-wrap .f-fill.reg { background:linear-gradient(90deg,#3B82F6,#60A5FA); }
+.funnel-wrap .f-fill.att { background:linear-gradient(90deg,#10B981,#34D399); }
+.funnel-wrap .f-fill.fbk { background:linear-gradient(90deg,#EAB308,#FDE047); }
+.funnel-wrap .f-meta { display:flex; justify-content:space-between; align-items:center; }
+.funnel-wrap .f-sublabel { font-size:0.75rem; color:var(--text-muted); font-style:italic; }
+.funnel-wrap .f-pct { font-family:'Outfit',sans-serif; font-size:0.95rem; font-weight:700; flex-shrink:0; }
+
+/* ========================================= */
+/* KPI Strip Banner */
+/* Used in: organizer/event_report.php */
+/* ========================================= */
+.kpi-strip {
+    background:var(--obsidian-card); border:1px solid var(--obsidian-border); border-radius:14px;
+    padding:0.85rem 1.5rem; display:flex; align-items:center; box-shadow:0 4px 20px rgba(0,0,0,0.2); gap:0; margin-bottom: 1.5rem; /* Flex row containing the key stats */
+}
+.kpi-item { flex:1; display:flex; align-items:center; gap:0.75rem; padding:0 1.25rem; }
+.kpi-item:first-child { padding-left:0; }
+.kpi-item:last-child { padding-right:0; }
+.kpi-divider { width:1px; height:40px; background:var(--obsidian-border); flex-shrink:0; /* 1px vertical separator line */ }
+.ic-att { color:#34D399; box-shadow:inset 0 0 14px rgba(52,211,153,0.12); /* Emerald glow effect */ }
+.ic-sat { color:var(--gold-primary); box-shadow:inset 0 0 14px var(--gold-glow); /* Gold glow effect */ }
+.ic-drp { color:#F87171; box-shadow:inset 0 0 14px rgba(248,113,113,0.12); /* Red glow effect */ }
+.ic-fbk { color:#60A5FA; box-shadow:inset 0 0 14px rgba(96,165,250,0.12); /* Blue glow effect */ }
+
+/* ========================================= */
+/* Event Leaderboard */
+/* Used in: organizer/analytics.php */
+/* ========================================= */
+.lb-list { flex:1; display:grid; grid-template-columns:1fr 1fr; gap:0.3rem; align-content:start; overflow-y:auto; /* 2-column scrollable grid */ }
+.lb-list::-webkit-scrollbar { width:4px; }
+.lb-list::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.08); border-radius:4px; }
+.lb-item { display:flex; align-items:center; gap:10px; padding:8px 12px; background:rgba(0,0,0,0.15); border:1px solid rgba(255,255,255,0.02); border-radius:8px; transition:background .2s; }
+.lb-item:hover { background:rgba(255,255,255,0.03); }
+.lb-rank { width:30px; height:30px; border-radius:7px; background:rgba(255,255,255,0.05); font-family:'Outfit',sans-serif; font-size:0.85rem; font-weight:800; color:var(--text-muted); display:flex; align-items:center; justify-content:center; flex-shrink:0; /* Centers the rank number */ }
+.rank-1 { background:linear-gradient(135deg,#FDE047,#D97706); color:#000; box-shadow:0 2px 8px rgba(250,204,21,0.2); /* Gold gradient for 1st place */ }
+.rank-2 { background:linear-gradient(135deg,#F1F5F9,#94A3B8); color:#0F172A; /* Silver gradient for 2nd place */ }
+.rank-3 { background:linear-gradient(135deg,#FDBA74,#B45309); color:#000; /* Bronze gradient for 3rd place */ }
+.lb-info { flex:1; min-width:0; }
+.lb-title { font-size:0.92rem; color:var(--text-main); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-weight:600; /* Prevents long titles from breaking the layout */ }
+.lb-meta { font-size:0.75rem; color:var(--text-muted); }
+.lb-stars { font-family:'Outfit',sans-serif; font-size:1.05rem; color:var(--gold-primary); font-weight:800; }

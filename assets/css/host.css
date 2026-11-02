@@ -1,0 +1,56 @@
+/* ==========================================================================
+   SECTION 7: HOST-SPECIFIC
+   Toggle Switch, Mark All, Certificates
+   Used in: host/*.php
+   ========================================================================== */
+
+/* ========================================= */
+/* Modern Toggle Switch */
+/* Used in: host/attendance.php */
+/* ========================================= */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0; /* Hides the native checkbox completely */
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.1); /* 10% white for the "off" state track */
+    transition: .4s; /* Smooth 400ms transition for sliding animation */
+    border-radius: 34px; /* Fully rounded pill shape */
+    border: var(--border-light);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #fff; /* Solid white thumb circle */
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: var(--primary-color); /* Changes track color when toggled on */
+    border-color: var(--primary-color);
+}
+
+input:checked+.slider:before {
+    transform: translateX(22px); /* Slides the thumb 22px to the right when checked */
+}
